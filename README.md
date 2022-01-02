@@ -5,7 +5,7 @@
 
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[Course Overview](#overview)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[Setting Up Your Computer](#setting-up)
-- [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Basics: VariablesAndFlowControl](#variables-and-flow-control)
+- [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Basics: Variables And Flow Control](#variables-and-flow-control)
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Functions]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Objects]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Arrays]
@@ -29,13 +29,13 @@
 
 - The course itself is broken into three parts.
 
-	- In part one, we're going to start with the very fundamentals of the language will be installing some program and going to start to build the task manager and note taking applications.
+    - In part one, we're going to start with the very fundamentals of the language will be installing some program and going to start to build the task manager and note taking applications.
 
-	- In part two, we're going to take what we learned about JavaScript and we're going to connect it to a interface, we'll be putting the finishing touches on the task manager and note applications.
+    - In part two, we're going to take what we learned about JavaScript and we're going to connect it to a interface, we'll be putting the finishing touches on the task manager and note applications.
 
-	- In part three, we're going to move on to the third and final app, our hangmen word game,we're going to explore asynchronous programming with JavaScript, and going to learn how to connect your application to third party data sources, This is going to allow us to send data off to be saved or to fetch data that we want to use in our applications, such as a new puzzle for the hangman game.
+    - In part three, we're going to move on to the third and final app, our hangmen word game,we're going to explore asynchronous programming with JavaScript, and going to learn how to connect your application to third party data sources, This is going to allow us to send data off to be saved or to fetch data that we want to use in our applications, such as a new puzzle for the hangman game.
 
-	- Being able to connect your app to third party data sources is essential for creating something real world.
+    - Being able to connect your app to third party data sources is essential for creating something real world.
 
 ## Setting Up
 
@@ -43,8 +43,8 @@
 
 - This is text editor that we will be using to write code.
 - Install some extenstion like 
-	- JavaScript (ES6) code snippets 
-	- Sublime Text Keymap 
+    - JavaScript (ES6) code snippets 
+    - Sublime Text Keymap 
 
 2. Installing Node.js [Nodejs](https://nodejs.org/en/download/)
 
@@ -70,9 +70,9 @@
 * === - equality operator
 * !== - no equal operator
 *  <  - less than operator
-*  >  - grater than operator
+* &lt;  - grater than operator
 * <=  - less than or equal to operator
-* >=  - greater than or equal to operator 
+* &lt;=  - greater than or equal to operator 
 * &&  - Logical And operator - True if both sides are true.
 * ||  - Logical Or operator - True if at least one side is ture.
 
