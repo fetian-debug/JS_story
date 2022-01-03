@@ -7,7 +7,7 @@
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[Setting Up Your Computer](#setting-up)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Basics: Variables And Flow Control](#variables-and-flow-control)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Functions](#functions)
-- [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Objects]
+- [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Objects](#objects)
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Arrays]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScripts In TheBrowser]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[DataStorage, Libraries And More]
@@ -281,3 +281,185 @@ console.log(result)
 
 /* node grade-calc.js */
 ```
+
+## Objects
+
+#### Notes 4
+- [String Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)  
+- [Number Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+- [Math Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+- let - allows you to declare local variable whose scope is limited to the block statement.
+
+- var - allows you to declare a variable globally or locally to an entire function scope, var can access before declared(hosting), var can redeclaring variable.
+
+- Const - just like let, are block-scoped. It's value can't be reassigned and it can't be redeclared.
+
+
+- Challenge 11 : Solution
+```
+// create object with properties name, age, location
+
+let me = {
+    name: 'fetian',
+    age: 22,
+    location: 'Egypt'
+}
+// print msg name is age and location
+console.log(`${me.name} is ${me.age} and lives in ${me.location}.`)
+// Increase age by 1 and print msg again
+me.age = me.age + 1
+console.log(`${me.name} is ${me.age} and lives in ${me.location}.`)
+
+/* node objects-101.js */
+```
+
+- Challenge 12 : Solution
+```js
+
+// create function - take fahrenheit in - return object with all three 
+
+let convertFahrenheit = function (fahrenheit){
+    return {
+        fahrenheit: fahrenheit,
+        kelvin: (fahrenheit + 459.67) * (5 / 9),
+        celsius: (fahrenheit -32) * (5 /9)
+    }
+}
+
+let temps = convertFahrenheit(32)
+console.log(temps)
+
+/* node objects-functions.js */
+```
+- Challenge 13 : Solution
+```js
+// create myAcount object with properites name, expenses, income
+let myAccount = {
+    name: 'Fetian',
+    expenses: 0 , 
+    income: 0
+}
+// addExpenses
+let addExpenses = function (account, amount){
+    account.expenses = account.expenses + amount
+}
+// addIncome
+let addIncome = function (account, income) {
+    account.income = account.income + income
+}
+
+// reset Account
+let restAccount = function(account) {
+    account.expenses = 0
+    account.income = 0
+}
+
+// get Account Summary
+let getAccountSummary = function(account) {
+    let balance = account.income - account.expenses
+    return `Account for ${account.name} has $${balance}. $${account.income} in income , $${account.expenses} in expenses.`
+}
+
+addIncome(myAccount, 2000)
+addExpenses(myAccount, 2.50)
+addExpenses(myAccount, 160)
+console.log(getAccountSummary(myAccount))
+restAccount(myAccount)
+console.log(getAccountSummary(myAccount))
+
+/* node objects-references.js */
+```
+
+- Challenge 14 : Solution
+```js
+// create restaurant with methods to check Availabilty seats, set seat party and remove it.
+let restaurant = {
+    name:'ASB',
+    guestCapacity:75,
+    guestCount:0,
+    checkAvailability: function (partySize) {
+        let seatsLeft = this.guestCapacity - this.guestCount
+        return partySize <= seatsLeft
+    },
+    seatParty: function (partySize) {
+        this.guestCount = this.guestCount + partySize
+    },
+    removeParty: function (partySize){
+        this.guestCount = this.guestCount - partySize
+
+    }
+}
+restaurant.seatParty(72)
+console.log(restaurant.checkAvailability(4))
+restaurant.removeParty(5)
+console.log(restaurant.checkAvailability(4))
+
+/* node objects-methods.js */
+```
+- Challenge 15 : Solution
+
+```js
+// create function password is valid
+// length is more than 8 - and it does't contain the word password
+
+let isValidPassword = function (password){
+    return password.length > 8 && !password.include('password')
+}
+
+console.log(isValidPassword('asdfp'))
+console.log(isValidPassword('abc123!@#$&^'))
+console.log(isValidPassword('asdfpassdfpoijpassword'))
+
+/* node string-methods.js */
+```
+- Challenge 16 : Solution
+
+```js
+// create guess function random numver 1-5 - true if correct - false if not correct
+let makeGuess = function(guess) {
+    let min = 1
+    let max = 5
+    let randomNum = Math.floor(Math.random() * (max - min +1)) + min
+
+    return guess === randomNum 
+}
+
+console.log(makeGuess(1))
+
+/* node number-methods.js */
+```
+
+- Challenge 17 : Solution
+```js
+// change variable to const if possible
+// students score, total possible score
+// 15/20 -> You get a C (75%)
+// A 90-100, B 80-89, C 70-79, D 60-69, F 0-59
+
+const gradeCalc = function(score, totalScore){
+    const percent = (score / totalScore) * 100
+    let letterGrade = ''
+    
+    if(percent >= 90){
+        letterGrade = 'A'
+    }else if (percent >= 80) {
+        letterGrade = 'B'
+    }else if (percent >= 70){
+        letterGrade = 'C'
+    }else if (percent >= 60){
+        letterGrade = 'D'
+    }else{
+        letterGrade = 'F'
+    }
+
+    return `You get a ${letterGrade} (${percent}%)!` 
+
+}
+
+const result = gradeCalc(19,20)
+console.log(result)
+
+/* node grade-calc.js */
+```
+
