@@ -9,7 +9,7 @@
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Functions](#functions)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Objects](#objects)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Arrays](#arrays)
-- [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScripts In TheBrowser]
+- [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScripts In The Browser](#js-in-browser)
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[DataStorage, Libraries And More]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[Expanding Our JavaScript Knowledge]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[Advanced Objects And Functions]
@@ -721,3 +721,216 @@ console.log(account.getAccountSummary())
 
 /* node expense-tracker.js */
 ```
+
+## JS In Browser
+
+#### Notes 6
+- [Script Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) - HTML element is used to embed executable code or data; this is typically used to embed or refer to JavaScript code. 
+- live-server - npm install -g live-server or yarn global add live-server
+- DOM - Doument Object Model
+- [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+
+
+- Challenge 27 : Solution
+
+```html
+<!-- 
+1. Create a new HTML file
+2. An h1 and 5 p tags
+3. Server that folder and view the doc in the browser -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todos</title>
+    </head>
+    <body>
+        <h1>Todos</h1>
+        <p>wake up early</p>
+        <p>Reading a book</p>
+        <p>Coding</p>
+        <p>Finish Courses</p>
+        <script src="todo-app.js"></script>
+    </body>
+</html>
+
+<!-- index.html -->
+ ``` 
+
+```js
+//4. Create an link a JavaScript file to the HTML
+//5. Remove all p tags that have "the" in the text
+
+const paragraphs = document.querySelectorAll('p')
+
+paragraphs.forEach(function (paragraph){
+    if (paragraph.textContent.include('the')){
+        paragraph.remove()
+    }
+})
+
+/* live-server todo-app.js */
+```
+
+- Challenge 28 : Solution
+
+```js
+const todos = [{
+    text: 'Order cat food',
+    completed: false
+}, {
+    text: 'Clean kitchen',
+    completed: true
+}, {
+    text: 'Buy food',
+    completed: true
+}, {
+    text: 'Do work',
+    completed: false
+}, {
+    text: 'Exercise',
+    completed: true
+}]
+
+const incompleteTodos = todos.filter(function (todo) {
+    return !todo.completed
+})
+
+const summary = document.createElement('h2')
+summary.textContent = `You have ${incompleteTodos.length} todos left`
+document.querySelector('body').appendChild(summary)
+
+todos.forEach(function (todo) {
+    const p = document.createElement('p')
+    p.textContent = todo.text
+    document.querySelector('body').appendChild(p)
+})
+
+// You have 2 todos left (p element)
+// Add a p for each todo above (use text value)
+
+/* live-server todo-app.js */
+```
+
+```html
+<!DOCTYPE html>
+
+<html>
+    <head></head>
+    <body>
+        <h1>Todos</h1>
+        <script src="todo-app.js"></script>
+    </body>
+</html>
+<!-- index.html -->
+```
+
+- Challenge 29 : Solution
+
+```js
+const todos = [{
+    text: 'Order cat food',
+    completed: false
+}, {
+    text: 'Clean kitchen',
+    completed: true
+}, {
+    text: 'Buy food',
+    completed: true
+}, {
+    text: 'Do work',
+    completed: false
+}, {
+    text: 'Exercise',
+    completed: true
+}]
+
+const incompleteTodos = todos.filter(function (todo) {
+    return !todo.completed
+})
+
+const summary = document.createElement('h2')
+summary.textContent = `You have ${incompleteTodos.length} todos left`
+document.querySelector('body').appendChild(summary)
+
+todos.forEach(function (todo) {
+    const p = document.createElement('p')
+    p.textContent = todo.text
+    document.querySelector('body').appendChild(p)
+})
+
+// Listen for new todo creation
+document.querySelector('#add-todo').addEventListener('click', function (e) {
+    console.log('Add a new todo...')
+})
+```
+
+```html
+<!DOCTYPE html>
+
+<html>
+    <head></head>
+    <body>
+        <h1>Todos</h1>
+        <button id="add-todo">Add Todo</button>
+        <script src="todo-app.js"></script>
+    </body>
+</html>
+```
+- Challenge 30 : Solution
+```js
+const todos = [{
+    text: 'Order cat food',
+    completed: false
+}, {
+    text: 'Clean kitchen',
+    completed: true
+}, {
+    text: 'Buy food',
+    completed: true
+}, {
+    text: 'Do work',
+    completed: false
+}, {
+    text: 'Exercise',
+    completed: true
+}]
+
+const incompleteTodos = todos.filter(function (todo) {
+    return !todo.completed
+})
+
+const summary = document.createElement('h2')
+summary.textContent = `You have ${incompleteTodos.length} todos left`
+document.querySelector('body').appendChild(summary)
+
+todos.forEach(function (todo) {
+    const p = document.createElement('p')
+    p.textContent = todo.text
+    document.querySelector('body').appendChild(p)
+})
+
+// Listen for new todo creation
+document.querySelector('#add-todo').addEventListener('click', function (e) {
+    console.log('Add a new todo...')
+})
+
+// Listen for todo text change
+document.querySelector('#new-todo-text').addEventListener('input', function (e) {
+    console.log(e.target.value)
+})
+```
+
+```html
+<!DOCTYPE html>
+
+<html>
+    <head></head>
+    <body>
+        <h1>Todos</h1>
+        <input id="new-todo-text" type="text" placeholder="Enter something to do">
+        <button id="add-todo">Add Todo</button>
+        <script src="todo-app.js"></script>
+    </body>
+</html>
+```
+
