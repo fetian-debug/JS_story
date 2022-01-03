@@ -1,12 +1,12 @@
 ## The Modern JavaScript Bootcamp
 <br />
 
-- ![100%](https://progress-bar.dev/30/?title=Done)
+- ![100%](https://progress-bar.dev/40/?title=Done)
 
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[Course Overview](#overview)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[Setting Up Your Computer](#setting-up)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Basics: Variables And Flow Control](#variables-and-flow-control)
-- [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Functions]
+- [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Functions](#functions)
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Objects]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Arrays]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScripts In TheBrowser]
@@ -60,11 +60,11 @@
 #### Rules Variable Names
 1. You can't define a variable more than once
 2. There are rules related to variable names
- * Variable names cannot contain spaces.
- * Variable names must begin with a letter, an underscore _ or a dollar sign ($).
- * Variable names can only contain letters, numbers, underscores, or dollar signs.
- * Variable names are case-sensitive.
- * Variable names cannot be reserved keywords.
+    *  Variable names cannot contain spaces.
+    * Variable names must begin with a letter, an underscore _ or a dollar sign ($).
+    * Variable names can only contain letters, numbers, underscores, or dollar signs.
+    * Variable names are case-sensitive.
+    * Variable names cannot be reserved keywords.
 
 #### Notes 1
 * === - equality operator
@@ -192,5 +192,92 @@ else {
 /* node logical-and-or.js */
 ```
 
+## Functions
+
+#### Notes 3
+* Function - input (argument), code, output (return vlaue)
+* Undefined - undefined value when no value is assigned before using it.
+    * undefined for variable
+    * undefined for function arguments
+    * undefined as function return default value
+* Null - null as assined value
+* arguments - Multiple arguments, Default arguments, 
+
 - Challenge 7 : Solution
 
+```js
+// convertFahrenheitToCelsius
+let convertFahrenheitToCelsius = function(fahrenheit){
+    let celsius = (fahrenheit - 32) * 5 / 9
+    return celsius
+}
+// call a couple of times (32) (68)
+let tempOne = convertFahrenheitToCelsius(32)
+let tempTwo = convertFahrenheitToCelsius(68)
+// Print the converted values
+console.log(tempOne)
+console.log(tempTwo)
+
+/* node functions-101.js */
+```
+
+- Challenge 8 : Solution 
+
+```js
+// function to get tip percent take two arguments total and tipPercent 
+let getTip = function(total, tipPercent = .2){
+    return total * tipPercent
+}
+let tip = getTip(100, .25)
+console.log(tip)
+
+/* node arguments.js */
+```
+
+- Challenge 9 : Solution 
+```js
+
+// Output is A 25% tip on $40 would be $10 using templete String
+// function to get tip percent take two arguments total and tipPercent 
+let getTip = function(total, tipPercent = .2){
+    let percent = tipPercent * 100
+    let tip = total * tipPercent
+    return `A ${percent} tip on $${total} would be $${tip}`
+}
+let tip = getTip(100, .25)
+console.log(tip)
+
+/* node arguments.js */
+```
+
+- Challenge 10 : Solution
+```js
+// students score, total possible score
+// 15/20 -> You get a C (75%)
+// A 90-100, B 80-89, C 70-79, D 60-69, F 0-59
+
+let gradeCalc = function(score, totalScore){
+    let percent = (score / totalScore) * 100
+    let letterGrade = ''
+    
+    if(percent >= 90){
+        letterGrade = 'A'
+    }else if (percent >= 80) {
+        letterGrade = 'B'
+    }else if (percent >= 70){
+        letterGrade = 'C'
+    }else if (percent >= 60){
+        letterGrade = 'D'
+    }else{
+        letterGrade = 'F'
+    }
+
+    return `You get a ${letterGrade} (${percent}%)!` 
+
+}
+
+let result = gradeCalc(19,20)
+console.log(result)
+
+/* node grade-calc.js */
+```
