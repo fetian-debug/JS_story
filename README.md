@@ -8,7 +8,7 @@
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Basics: Variables And Flow Control](#variables-and-flow-control)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Functions](#functions)
 - [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Objects](#objects)
-- [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScript Arrays]
+- [x] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `done`[JavaScript Arrays](#arrays)
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[JavaScripts In TheBrowser]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[DataStorage, Libraries And More]
 - [ ] ![#0D64C3](https://via.placeholder.com/12/0D64C3/000000?text=+) `in progress`[Expanding Our JavaScript Knowledge]
@@ -291,7 +291,7 @@ console.log(result)
 
 - let - allows you to declare local variable whose scope is limited to the block statement.
 
-- var - allows you to declare a variable globally or locally to an entire function scope, can access before declared(hosting) and can redeclaring variable.
+- var - allows you to declare a variable globally or locally to an entire function scope,can access before declared(hosting) and can redeclaring variable.
 
 - Const - just like let, are block-scoped. It's value can't be reassigned and it can't be redeclared.
 
@@ -463,3 +463,261 @@ console.log(result)
 /* node grade-calc.js */
 ```
 
+## Arrays
+
+#### Notes 5
+- [Array Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [For Statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
+- [Filter Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+- [Sort Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+- Challenge 18 : Solution
+```js
+// create an array with five todos
+const todos = ['Order cat food','watering the tree', 'Do work', 'Read book', 'Go to Gym']
+// You have x todo
+console.log(`You have ${todos.length} todo`)
+// Print the first and second to last items 
+console.log(`Todo: ${todos[0]}`)
+console.log(`Todo: ${todos[todos.length - 2]}`)
+
+/* node todo.js
+```
+
+- Challenge 19 : Solution
+```js
+// create an array with five todos
+const todos = ['Order cat food','watering the tree', 'Do work', 'Read book', 'Go to Gym']
+//Delete the 3rd item
+todos.splice(2,1)
+// Add a new item onto the end
+todos.push('Buy coffe')
+// Remove the first item from the list
+todos.shift()
+// You have x todo
+console.log(`You have ${todos.length} todo`)
+console.log(todos)
+
+/* node todo.js */
+```
+
+- Challenge 20 : Solution
+
+```js
+// create an array with five todos
+const todos = ['Order cat food','watering the tree', 'Do work', 'Read book', 'Go to Gym']
+//Delete the 3rd item
+todos.splice(2,1)
+// Add a new item onto the end
+todos.push('Buy coffe')
+// Remove the first item from the list
+todos.shift()
+// You have x todo
+console.log(`You have ${todos.length} todo`)
+// print Order todos like 1. todo , 2. todo ....
+todos.forEach(function (todo, index){
+    const num = index + 1
+    console.log(`${num}. ${todo}`)
+})
+
+/* node todo.js */
+```
+
+- Challenge 21 : Solution
+
+```js
+// create an array with five todos
+const todos = ['Order cat food','watering the tree', 'Do work', 'Read book', 'Go to Gym']
+//Delete the 3rd item
+todos.splice(2,1)
+// Add a new item onto the end
+todos.push('Buy coffe')
+// Remove the first item from the list
+todos.shift()
+// You have x todo
+console.log(`You have ${todos.length} todo`)
+// Using for statement print Order todos like 1. todo , 2. todo .
+for (let count= 0; count < todos.length; count++){
+    const num = count + 1
+    const todo = todos[count]
+    console.log(`${num}. ${todo}`)
+}
+
+/* node todo.js */
+```
+
+- Challenge 22 : Solution
+
+```js
+// create an array with five todos
+//const todos = ['Order cat food','watering the tree', 'buy food', 'Do work', 'Exercise']
+// 1. convert array to array of objects -> text, completed
+const todos =[{
+    text: 'Order cat food',
+    completed:true
+},{
+    text: 'watering the tree',
+    completed:true
+},{
+    text: 'buy food',
+    completed:true
+},{
+    text: 'Do work',
+    completed:true
+},{
+    text: 'Exercise',
+    completed:true
+}]
+// 2. create function to remove a todo by text value
+const deleteTodo = function ( todos, todoText){
+    const index = todos.findIndex(function (todos){
+        return todo.text.toLowerCase() === todoText.toLowerCase()
+    })
+    if (index > -1){
+        todos.splice(index, 1)
+    }
+}
+deleteTodo(todos, 'buy food')
+console.log(todos)
+/* node todo.js */
+```
+- Challenge 23 : Solution
+
+```js
+const todos =[{
+    text: 'Order cat food',
+    completed:true
+},{
+    text: 'watering the tree',
+    completed:true
+},{
+    text: 'buy food',
+    completed: false
+},{
+    text: 'Do work',
+    completed: false
+},{
+    text: 'Exercise',
+    completed: false
+}]
+// get things not completed
+const getThingsToDo = function (todos) {
+    return todos.filter(function (todo){
+        return !todo.completed
+    })
+}
+console.log(getThingsToDo(todos))
+
+/* node todo.js */
+```
+- Challenge 24 : Solution
+
+```js
+const todos =[{
+    text: 'Order cat food',
+    completed:true
+},{
+    text: 'watering the tree',
+    completed:true
+},{
+    text: 'buy food',
+    completed: false
+},{
+    text: 'Do work',
+    completed: false
+},{
+    text: 'Exercise',
+    completed: false
+}]
+// sort todos 
+const sortTodos= function (todos) {
+    return todos.sort(function (a, b){
+        if (!a.completed && b.completed){
+            return -1
+        }else if (!b.completed && a.completed){
+            return 1
+        }else{
+            return 0
+        }
+
+    })
+}
+console.log(sortTodos(todos))
+
+/* node todo.js */
+```
+- Challenge 25 : Solution
+```js
+// Expense -> description, amount
+// addExpense -> description, amount
+// getAccountSummary -> total up all expenses -> Fetian has $1235 in expenses
+const account = {
+    name: 'Fetian',
+    expenses: [],
+    addExpenses: function (description, amount){
+        this.expenses.push({
+            description: description,
+            amount: amount
+        })
+    },
+    getAccountSummary: function(){
+        let totalExpenses = 0
+        this.expenses.forEach(function (expenses){
+            totalExpenses = totalExpenses + expenses.amount
+        })
+        return `${this.name} has $${totalExpenses} in expenses`
+    }
+}
+account.addExpenses('Rent', 690)
+account.addExpenses('Coffe', 2)
+console.log(account.getAccountSummary())
+
+/* node expense-tracker.js */
+```
+
+
+- Challenge 26 : Solution
+```js
+// 1. add income array to account
+// 2. addIncome method => description, amount
+// 3. Tweak getAccountSummary -> Fetian has a balance of $10. $100 in income. $90 in expenses
+const account = {
+    name: 'Fetian',
+    expenses: [],
+    income: []
+    addExpenses: function (description, amount){
+        this.expenses.push({
+            description: description,
+            amount: amount
+        })
+    },
+    addIncome: function (description, amount) {
+        this.income.push({
+            description: description,
+            amount: amount
+        })
+    }
+    getAccountSummary: function(){
+        let totalExpenses = 0
+        let totalIncome = 0
+        let accountBalence =0
+        this.expenses.forEach(function (expenses){
+            totalExpenses = totalExpenses + expenses.amount
+        })
+
+        this.income.forEach(function (income) {
+            totalIncome = totalIncome + income.amount
+        })
+
+        accountBalence = totalIncome - totalExpenses
+
+        return `${this.name} has a balance of $${accountBalence}. $${totalIncome} in income. $${totalExpenses} in expenses`
+    }
+}
+account.addExpenses('Rent', 690)
+account.addExpenses('Coffe', 2)
+account.addIncome('Job', 1000)
+console.log(account.getAccountSummary())
+
+/* node expense-tracker.js */
+```
