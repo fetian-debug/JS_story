@@ -291,7 +291,7 @@ console.log(result)
 
 - let - allows you to declare local variable whose scope is limited to the block statement.
 
-- var - allows you to declare a variable globally or locally to an entire function scope, var can access before declared(hosting), var can redeclaring variable.
+- var - allows you to declare a variable globally or locally to an entire function scope, can access before declared(hosting) and can redeclaring variable.
 
 - Const - just like let, are block-scoped. It's value can't be reassigned and it can't be redeclared.
 
